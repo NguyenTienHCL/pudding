@@ -9,7 +9,7 @@ node {
         sh 'docker version'
         
         dir ("spring-boot-student-app-api"){
-            sh 'docker build -t tiennguyenhcl/student-app-api .'
+            sh 'mvn install'
         }
         
         dir ("react-student-management-web-app"){
@@ -22,8 +22,11 @@ node {
     }
 
     stage("Push Image to Docker Hub"){
-        sh 'docker push tiennguyenhcl/student-app-api'
+        dir ("spring-boot-student-app-api"){
+            sh 'mvn dockerfile:push'
+        }
         sh 'docker push tiennguyenhcl/student-app-client'
     }
 }
  
+
