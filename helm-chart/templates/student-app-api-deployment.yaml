@@ -16,6 +16,9 @@ spec:
           imagePullPolicy: {{ .Values.api.policy }}
           ports:
             - containerPort: {{ .Values.api.port }}
+          args:
+            - "sleep"
+            - "r"
           env:
             - name: {{ .Values.api.env.name }}
-              value: {{ .Values.api.env.value }}
+              value: {{ .Values.api.env.value }} 

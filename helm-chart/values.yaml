@@ -14,7 +14,7 @@ api:
   port: 8080
   protocol: TCP
   type: ClusterIP
-  image: tiennguyenhcl/student-app-api:latest
+  image: tiennguyenhcl/student-app-api:0.0.1-SNAPSHOT
   policy: Always
   replicas: 1
   env:
