@@ -38,18 +38,6 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl version -o json
 
-#minikube start
-minikube start --driver=none --kubernetes-version v1.23.8
-
-#istio
-helm repo add istio https://istio-release.storage.googleapis.com/charts
-helm repo update
-kubectl create namespace istio-system
-helm install istio-base istio/base -n istio-system
-helm install istiod istio/istiod -n istio-system --wait
-kubectl create namespace istio-ingress
-kubectl label namespace default istio-injection=enabled
-
 #prometheus
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/prometheus
